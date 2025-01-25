@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pagina de Inicio</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+</head>
+<body>
+    <div class="formulario_ejercicio_1">
+        <h1>Cálculo de Compras</h1>
+        <form method="POST">
+            <label for="nombre">Ingresa tu nombre:</label>
+            <input type="text" name="nombre" class="input_ejercicio1" value="{{ nombre or '' }}" required><br>
+
+            <label for="edad">Ingresa tu edad:</label>
+            <input type="number" name="edad" class="input_ejercicio1" value="{{ edad or '' }}" required><br>
+
+            <label for="cantidad_taros">Ingresa la cantidad de tarros de pintura a comprar:</label>
+            <input type="number" name="cantidad_taros" class="input_ejercicio1" value="{{ cantidad_taros or '' }}" required><br>
+
+            <input type="submit" value="Calcular" class="boton_ejercicio1">
+        </form>
+        {% if nombre %}
+            <div class="resultado_eje1">
+                <p>Nombre del cliente: ${{ nombre }}</p>
+                <p>Total sin descuento: ${{ total_sin_descuento }}</p>
+
+                {% if descuento_en_dinero > 0 %}
+                    <p>El descuento es :${{ descuento_en_dinero }}</p>
+                {% else %}
+                    <p>No se aplica descuento.</p>
+                {% endif %}
+
+                <p>El total a pagar : ${{ total_a_pagar }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
